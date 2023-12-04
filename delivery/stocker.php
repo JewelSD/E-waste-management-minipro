@@ -1,0 +1,34 @@
+<?php
+include "config.php";
+include "config/connect.php";
+////////////////////////////////////////////////////////////////////////////
+// Collecting delivery module data
+///////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////
+/////get collector daily stock details
+////////////////////////////////////////////////////////////////////////////////
+
+    $plastic = $_POST['plastic'];
+    $papper = $_POST['papper'];
+    $copper = $_POST['copper'];
+    $brass = $_POST['brass'];
+    $aluminium = $_POST['aluminium'];
+    $iron = $_POST['iron'];
+    $did = $_SESSION['id'];
+    $sql = "INSERT INTO stock ( plastic, papper, aluminum, copper, brass, iron, did)
+  VALUES ('$plastic', '$aluminium', '$papper', '$copper', '$brass', '$iron', '$did')";
+/////////////////////////////////////////////////////////////////////////////////
+////////////////isert data to database
+/////////////////////////////////////////////////////////////////////////////////
+    if ($connection->query($sql) === true) {
+        echo "New record created successfully";
+        // header('Location: index.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . $connection->error;
+    }
+    $connection->close();
+
+////////////////////////////////////////////////////////////////////////////////
+?>
